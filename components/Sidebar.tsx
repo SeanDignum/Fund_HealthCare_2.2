@@ -20,6 +20,7 @@ const navItems = [
   { id: "visit", label: "Active Visit", icon: Stethoscope, badge: null },
   { id: "documentation", label: "Documentation", icon: FileText, badge: null },
   { id: "history", label: "History", icon: Clock, badge: null },
+  { id: "risk", label: "Risk Profile", icon: Activity, badge: "New" },
   { id: "analytics", label: "Analytics", icon: BarChart2, badge: null },
   { id: "profile", label: "Profile", icon: UserCircle, badge: null },
 ]
@@ -44,18 +45,17 @@ export default function Sidebar({ activeView, onNavigate }: SidebarProps) {
             <button
               key={id}
               onClick={() => onNavigate(id)}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 group ${
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group ${
                 isActive
-                  ? "bg-[#2563EB] text-white shadow-sm shadow-blue-200"
-                  : "text-[#6B7280] hover:bg-gray-50 hover:text-[#111827]"
+                  ? "bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white shadow-md shadow-blue-500/20"
+                  : "text-[#6B7280] hover:bg-[#F0F4F8] hover:text-[#111827]"
               }`}
               aria-current={isActive ? "page" : undefined}
             >
               <Icon
-                className={`w-4.5 h-4.5 shrink-0 ${
-                  isActive ? "text-white" : "text-gray-400 group-hover:text-gray-600"
+                className={`w-5 h-5 shrink-0 transition-colors ${
+                  isActive ? "text-white" : "text-gray-400 group-hover:text-blue-500"
                 }`}
-                size={18}
               />
               <span className="flex-1 text-left">{label}</span>
               {badge && (

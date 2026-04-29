@@ -8,8 +8,10 @@ import ActiveVisit from "@/components/screens/ActiveVisit"
 import Documentation from "@/components/screens/Documentation"
 import History from "@/components/screens/History"
 import Analytics from "@/components/screens/Analytics"
+import DoctorRiskProfile from "@/components/screens/DoctorRiskProfile"
+import Login from "@/components/screens/Login"
 
-type View = "today" | "visit" | "documentation" | "history" | "analytics" | "profile"
+type View = "today" | "visit" | "documentation" | "history" | "analytics" | "profile" | "risk"
 
 function PlaceholderScreen({ title, description }: { title: string; description: string }) {
   return (
@@ -24,9 +26,14 @@ function PlaceholderScreen({ title, description }: { title: string; description:
 }
 
 export default function MediClearApp() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [activeView, setActiveView] = useState<View>("today")
 
   const navigate = (view: string) => setActiveView(view as View)
+
+  if (!isAuthenticated) {
+    return <Login onLogin={() => setIsAuthenticated(true)} />
+  }
 
   return (
     <div className="min-h-screen bg-[#F7F9FC]">
@@ -44,6 +51,7 @@ export default function MediClearApp() {
           {activeView === "documentation" && <Documentation onNavigate={navigate} />}
           {activeView === "history" && <History onNavigate={navigate} />}
           {activeView === "analytics" && <Analytics />}
+          {activeView === "risk" && <DoctorRiskProfile onNavigate={navigate} />}
           {activeView === "profile" && (
             <PlaceholderScreen
               title="Doctor Profile"
