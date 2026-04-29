@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { AILogo } from "@/components/Logo"
 
 interface LoginProps {
   onLogin: () => void
@@ -18,8 +19,9 @@ export default function Login({ onLogin }: LoginProps) {
   return (
     <div className="min-h-screen bg-[#F7F9FC] flex flex-col items-center justify-center p-4 font-sans relative">
       <div className="bg-white rounded-[24px] shadow-sm border border-gray-100 p-8 sm:p-10 w-full max-w-[480px]">
-        <div className="text-center mb-8">
-          <p className="text-[11px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-4">
+        <div className="text-center mb-8 flex flex-col items-center">
+          <AILogo className="w-16 h-16 mb-4" />
+          <p className="text-[11px] font-bold tracking-[0.2em] text-[#00cfa1] uppercase mb-4">
             AI Patient Health Assistant
           </p>
           <h1 className="text-[28px] font-bold text-[#111827] mb-3">Secure Patient Portal</h1>
