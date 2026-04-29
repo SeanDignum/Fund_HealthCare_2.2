@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Bell, Scale, Search, X, MessageSquare, ChevronDown } from "lucide-react"
+import { AILogo } from "@/components/Logo"
 
 interface HeaderProps {
   onNavigate: (view: string) => void
@@ -29,10 +30,8 @@ export default function Header({ onNavigate }: HeaderProps) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-white border-b border-gray-200 flex items-center px-6 gap-4">
       {/* Logo */}
-      <div className="flex items-center gap-2 w-56 shrink-0">
-        <div className="w-8 h-8 rounded-lg bg-[#2563EB] flex items-center justify-center">
-          <span className="text-white font-bold text-sm">M</span>
-        </div>
+      <div className="flex items-center gap-2.5 w-56 shrink-0">
+        <AILogo className="w-8 h-8" />
         <span className="text-[#111827] font-semibold text-lg tracking-tight">MediClear AI</span>
       </div>
 
